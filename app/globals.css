@@ -4,4 +4,16 @@
   --color-textColor: #232321;
   --color-cardBg: #FAFAFA;
   --color-accent:#FFA52F;
+  --color-blue:#4A69E2;
+  --color-gray:#E7E7E3;
+}
+
+body {
+  font-family: var(--font-rubik), sans-serif;
+}
+
+@layer components {
+  .font-open {
+    font-family: var(--font-open-sans), sans-serif;
+  }
 }
