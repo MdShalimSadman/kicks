@@ -1,0 +1,58 @@
+import Image from "next/image";
+
+const Hero = () => {
+  return (
+    <div>
+      <p className="uppercase my-6 font-bold text-textColor text-6xl lg:text-[233.5px]">
+        Do it <span className="text-blue">right</span>
+      </p>
+      <div className="relative w-full h-95.5 lg:h-187.5">
+        <div className="absolute top-28 lg:top-44 -left-15.5 lg:-left-[80.6px] p-2 lg:p-6 rounded-b-2xl -rotate-90 z-50 bg-textColor">
+          <p className="text-gray text-xs lg:text-base font-semibold">
+            Nike product of the year
+          </p>
+        </div>
+        <Image
+          src="/images/hero/hero-bg-image.svg"
+          alt="hero-bg"
+          fill
+          className="object-cover rounded-3xl lg:rounded-[64px]"
+          priority
+        />
+        <div className="z-50 absolute bottom-4 lg:bottom-12 left-4 lg:left-12 font-semibold">
+          <p className="text-2xl lg:text-[74px] text-white">NIKE AIR MAX</p>
+          <p className="text-sm max-w-[60%] lg:max-w-[65%] lg:text-2xl font-open text-gray">
+            Nike introducing the new air max for everyone&apos;s comfort
+          </p>
+          <button
+            title="Shop now"
+            name="Shop now"
+            className="uppercase cursor-pointer bg-blue px-4 lg:px-8 py-2 lg:py-4 text-white rounded-lg mt-2 lg:mt-6 text-sm font-medium"
+          >
+            Shop Now
+          </button>
+        </div>
+        <div className="z-50 absolute bottom-4 right-4 lg:bottom-12 lg:right-12 space-y-4">
+          <Image
+            src="/images/hero/hero-side-shoe-1.svg"
+            width={160}
+            height={160}
+            alt="shoe-1"
+            priority
+            className="size-16 lg:size-40"
+          />
+          <Image
+            src="/images/hero/hero-side-shoe-2.svg"
+            width={160}
+            height={160}
+            alt="shoe-2"
+            priority
+            className="size-16 lg:size-40"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;

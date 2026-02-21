@@ -17,11 +17,11 @@ const Navbar = () => {
     <nav className="bg-cardBg rounded-3xl p-4 md:px-8 md:py-6 text-base font-bold text-textColor relative">
       <div className="grid grid-cols-3 items-center">
         <div className="flex items-center">
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Menu className="size-5" />
           </div>
 
-          <div className="hidden md:flex gap-10 items-center">
+          <div className="hidden lg:flex gap-10 items-center">
             <Link
               href="/"
               className="hover:opacity-70 transition-opacity whitespace-nowrap"
@@ -64,7 +64,7 @@ const Navbar = () => {
         <div className="flex items-center justify-end gap-2 md:gap-10">
           <Search size={24} className="hidden md:block cursor-pointer" />
           <Image
-            src="/images/user.svg"
+            src="/images/navbar/user.svg"
             width={24}
             height={24}
             alt="user"
