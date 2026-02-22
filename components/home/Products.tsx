@@ -11,11 +11,11 @@ const Products = () => {
   if (isError) return <p>Something went wrong!</p>;
   
   return (
-    <section className="container mx-auto px-4">
+    <section className="w-full px-4 md:px-15">
       <div className='mb-6 mt-6 lg:mb-8 lg:mt-22.5 flex w-full justify-between items-center lg:items-end'>
-        <p className="text-textColor text-2xl lg:text-[74px] font-semibold max-w-[50%] lg:uppercase leading-[95%]">
+        <h2 className="text-textColor text-2xl lg:text-[74px] font-semibold max-w-[50%] lg:uppercase leading-[95%]">
           Don&apos;t miss out new drops
-        </p>
+        </h2>
         <Button title="Shop new drops" name="Shop new drops">Shop new drops</Button>
       </div>
 

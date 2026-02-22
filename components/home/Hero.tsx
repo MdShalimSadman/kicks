@@ -2,10 +2,10 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 
 const Hero = () => (
-  <div>
-    <p className="uppercase my-6 font-bold text-textColor text-6xl lg:text-[233.5px] leading-[100%]">
+  <div className="px-4 md:px-15">
+    <h1 className="uppercase my-6 font-bold text-textColor text-6xl lg:text-[233.5px] leading-[100%]">
       Do it <span className="text-blue">right</span>
-    </p>
+    </h1>
     <div className="relative w-full h-95.5 lg:h-187.5">
       <div className="absolute top-28 lg:top-44 -left-15.5 lg:-left-[80.6px] p-2 lg:p-6 rounded-b-2xl -rotate-90 z-50 bg-textColor">
         <p className="text-gray text-xs lg:text-base font-semibold">

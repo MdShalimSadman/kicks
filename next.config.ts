@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         hostname: 'api.escuelajs.co',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'pravatar.cc',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeimg.com',
+        pathname: '/**',
+      },
     ],
   },
 };
