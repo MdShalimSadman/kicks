@@ -9,12 +9,19 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import CategoryCard from "./CategoryCard";
+import { ICategory } from "@/types/categories.types";
 
 const Categories = () => {
   const { data: categories, isLoading, isError } = useCategories();
 
   if (isLoading) return <p className="p-20 text-white">Loading...</p>;
   if (isError) return <p className="p-20 text-white">Something went wrong!</p>;
+
+  const pairs =
+    categories?.reduce((acc: ICategory[][], _, i) => {
+      if (i % 2 === 0) acc.push(categories.slice(i, i + 2));
+      return acc;
+    }, []) || [];
 
   return (
     <section className="bg-textColor pt-7 lg:pt-22.5 mt-4 lg:mt-32 overflow-hidden">
@@ -36,13 +43,19 @@ const Categories = () => {
           </div>
         </div>
 
-        <CarouselContent className="-ml-4 px-8 lg:px-14.5 gap-0!">
-          {categories?.map((category, index) => (
-            <CarouselItem
-              key={category.id}
-              className="md:basis-1/2 lg:basis-1/2 pl-0"
-            >
-              <CategoryCard category={category} isFirst={index === 0} />
+        <CarouselContent className="-ml-4 px-4 lg:px-14.5 gap-0">
+          {pairs.map((pair, groupIndex) => (
+            <CarouselItem key={groupIndex} className="basis-full pl-4 lg:pl-0">
+              <div className="flex flex-col lg:flex-row gap-0">
+                {pair.map((category, index) => (
+                  <div key={category.id} className="w-full lg:w-1/2">
+                    <CategoryCard
+                      category={category}
+                      isFirst={groupIndex === 0 && index === 0}
+                    />
+                  </div>
+                ))}
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
