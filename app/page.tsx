@@ -1,9 +1,11 @@
 import Hero from "@/components/home/Hero";
+import Products from "@/components/home/Products";
 
 export default function Home() {
   return (
-    <div className="space-y-6">
+    <>
       <Hero />
-    </div>
+      <Products/>
+    </>
   );
 }

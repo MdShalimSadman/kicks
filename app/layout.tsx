@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Rubik, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import TanstackProvider from "@/providers/TanstackProvider";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -28,10 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.variable} ${openSans.variable} antialiased`}>
-        <div className="px-4 py-6 md:px-15 md:py-8 bg-gray">
-          <Navbar />
-          {children}
-        </div>
+        <TanstackProvider>
+          <div className="px-4 py-6 md:px-15 md:py-8 bg-gray">
+            <Navbar />
+            {children}
+          </div>
+        </TanstackProvider>
       </body>
     </html>
   );
