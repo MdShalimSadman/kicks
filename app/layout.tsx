@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${rubik.variable} ${openSans.variable} antialiased`}>
         <TanstackProvider>
-          <div className="px-4 py-6 md:px-15 md:py-8 bg-gray">
+          <div className="py-6 md:py-8 bg-gray">
             <Navbar />
             {children}
           </div>
