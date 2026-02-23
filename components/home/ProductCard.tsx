@@ -1,5 +1,6 @@
 import { IProduct } from "@/types/products.types";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
@@ -27,8 +28,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
           </p>
         </div>
 
-        <Button className="w-full bg-textColor text-[10px] md:text-xs lg:text-sm py-5 px-5">
-          View Product - <span className="text-accent">${product.price}</span>
+        <Button asChild className="w-full bg-textColor text-[10px] md:text-xs lg:text-sm py-5 px-5">
+          <Link href={`/product/${product.slug}`}>
+            View Product - <span className="text-accent ml-1">${product.price}</span>
+          </Link>
         </Button>
       </div>
     </div>
