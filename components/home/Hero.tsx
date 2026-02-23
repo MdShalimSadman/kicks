@@ -21,7 +21,7 @@ const Hero = () => (
       />
       <div className="z-50 absolute bottom-4 lg:bottom-12 left-4 lg:left-12 font-semibold">
         <p className="text-2xl lg:text-[74px] text-white">NIKE AIR MAX</p>
-        <p className="text-sm max-w-[60%] lg:max-w-[65%] lg:text-2xl font-open text-gray">
+        <p className="text-sm max-w-[60%] lg:max-w-[65%] lg:text-2xl font-sans text-gray">
           Nike introducing the new air max for everyone&apos;s comfort
         </p>
         <Button title="Shop now" name="Shop now" className="mt-2 lg:mt-6">
