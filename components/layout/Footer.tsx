@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <div className="-mr-3 -mb-2 bg-accent rounded-full flex items-center justify-center w-fit size-6.5 p-1">
+            <div className="-mr-5 -mb-1 lg:-mr-3 lg:-mb-2 bg-accent rounded-full flex items-center justify-center w-fit size-6.5 p-1">
               <Plus className="text-blue font-extrabold" size={18}/>
             </div>
             <Logo fill="white" className=" w-47.75 h-11.75 lg:w-87.75 lg:h-22"/>

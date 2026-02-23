@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { getIndividualProduct } from "@/api/products.api";
 import { IProduct } from "@/types/products.types";
+import ProductCarousel from "@/components/product/ProductCarousel";
 
 export default function ProductPage() {
   const params = useParams();
@@ -200,6 +201,9 @@ export default function ProductPage() {
           </div>
         </div>
 
+      </div>
+      <div>
+        <ProductCarousel/>
       </div>
     </div>
   );
