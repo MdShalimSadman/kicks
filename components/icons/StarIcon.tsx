@@ -1,0 +1,31 @@
+import { SVGProps, FC } from "react";
+
+interface IconProps extends SVGProps<SVGSVGElement> {
+  className?: string;
+  width?: string;
+  height?: string;
+}
+
+const StarIcon: FC<IconProps> = ({
+  className,
+  width = "24",
+  height = "24",
+}) => {
+  return (
+    <svg
+      className={className}
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.43 10L12.96 5.16001C12.67 4.21001 11.33 4.21001 11.05 5.16001L9.57 10H5.12C4.15 10 3.75 11.25 4.54 11.81L8.18001 14.41L6.75 19.02C6.46 19.95 7.54001 20.7 8.31001 20.11L12 17.31L15.69 20.12C16.46 20.71 17.54 19.96 17.25 19.03L15.82 14.42L19.46 11.82C20.25 11.25 19.85 10.01 18.88 10.01H14.43V10Z"
+        fill="#FFA52F"
+      />
+    </svg>
+  );
+};
+
+export default StarIcon;

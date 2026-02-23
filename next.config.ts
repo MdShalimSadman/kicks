@@ -5,29 +5,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'i.imgur.com',
+        hostname: '**',
         pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        pathname: '/**',
-      },
-       {
-        protocol: 'https',
-        hostname: 'api.escuelajs.co',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'pravatar.cc',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placeimg.com',
-        pathname: '/**',
-      },
+      }
     ],
   },
 };
