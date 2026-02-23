@@ -6,6 +6,12 @@ import Image from "next/image";
 import { Heart } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  useCarousel,
+} from "@/components/ui/carousel";
 import { getIndividualProduct } from "@/api/products.api";
 import { IProduct } from "@/types/products.types";
 
@@ -23,7 +29,7 @@ export default function ProductPage() {
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-      
+
       const response = await getIndividualProduct(formattedTitle);
       return Array.isArray(response) ? response[0] : response;
     },
@@ -47,22 +53,22 @@ export default function ProductPage() {
   }
 
   const sizes = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
-  
+
   return (
     <div className="mx-auto px-4 md:px-15 py-8 bg-gray">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-        
-        <div className="lg:col-span-8 grid grid-cols-2 gap-2">
+
+        <div className="hidden lg:grid lg:col-span-8 grid-cols-2 gap-2">
           {product.images?.slice(0, 4).map((img, idx) => {
-            const cornerClass = 
-              idx === 0 ? "rounded-tl-[48px]" : 
-              idx === 1 ? "rounded-tr-[48px]" : 
-              idx === 2 ? "rounded-bl-[48px]" : 
+            const cornerClass =
+              idx === 0 ? "rounded-tl-[48px]" :
+              idx === 1 ? "rounded-tr-[48px]" :
+              idx === 2 ? "rounded-bl-[48px]" :
               idx === 3 ? "rounded-br-[48px]" : "";
 
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`relative aspect-square overflow-hidden bg-white ${cornerClass}`}
               >
                 <Image
@@ -75,6 +81,47 @@ export default function ProductPage() {
               </div>
             );
           })}
+        </div>
+
+        <div className="lg:hidden w-full -mx-4">
+          <Carousel
+            opts={{ loop: true }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-0">
+              {product.images?.slice(0, 4).map((img, idx) => (
+                <CarouselItem key={idx} className="pl-0 basis-full">
+                  <div className="relative w-full aspect-square bg-white overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={product.title || `Product image ${idx + 1}`}
+                      fill
+                      className="object-cover"
+                      priority={idx === 0}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <MobileCarouselDots total={Math.min(product.images?.length ?? 0, 4)} />
+          </Carousel>
+
+          <div className="flex gap-2 justify-center mt-3 px-4">
+            {product.images?.slice(0, 4).map((img, idx) => (
+              <div
+                key={idx}
+                className="relative w-16 h-16 rounded-lg overflow-hidden bg-white flex-shrink-0"
+              >
+                <Image
+                  src={img}
+                  alt={`Thumbnail ${idx + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="lg:col-span-4 flex flex-col gap-2 pl-0 lg:pl-6">
@@ -93,13 +140,13 @@ export default function ProductPage() {
           <div className="my-8">
             <p className="text-xs font-bold uppercase tracking-tight mb-2">Color</p>
             <div className="flex gap-2 items-center">
-              <button 
+              <button
                 onClick={() => setSelectedColor("navy")}
                 className={`w-12 h-12 rounded-full bg-transparent p-1 border-2 cursor-pointer ${selectedColor === "navy" ? "border-textColor" : "border-transparent"}`}
               >
-                <div className="w-full h-full rounded-full bg-[#2B343E] border  border-white/20" />
+                <div className="w-full h-full rounded-full bg-[#2B343E] border border-white/20" />
               </button>
-              <button 
+              <button
                 onClick={() => setSelectedColor("green")}
                 className={`w-12 h-12 rounded-full bg-transparent p-1 border-2 cursor-pointer ${selectedColor === "green" ? "border-textColor" : "border-transparent"}`}
               >
@@ -113,14 +160,14 @@ export default function ProductPage() {
               <p className="text-xs font-bold uppercase">Size</p>
               <button className="text-[10px] font-bold underline uppercase">Size Chart</button>
             </div>
-            <div className="grid grid-cols-8 gap-1">
+            <div className="grid grid-cols-6 lg:grid-cols-8 gap-1">
               {sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={`py-3 w-12.5 h-12 text-sm font-medium rounded-sm transition-all
-                    ${selectedSize === size 
-                      ? "bg-textColor text-white" 
+                    ${selectedSize === size
+                      ? "bg-textColor text-white"
                       : "bg-white text-textColor hover:bg-gray-200"
                     } ${size === 39 || size === 40 ? "opacity-40 cursor-not-allowed bg-gray-100" : ""}`}
                 >
@@ -139,7 +186,7 @@ export default function ProductPage() {
             </Button>
           </div>
 
-          <Button className="w-full bg-blue hover:bg-blue text-white font-bold  rounded-lg h-12 uppercase tracking-tighter shadow-none">
+          <Button className="w-full bg-blue hover:bg-blue text-white font-bold rounded-lg h-12 uppercase tracking-tighter shadow-none">
             Buy It Now
           </Button>
 
@@ -154,6 +201,34 @@ export default function ProductPage() {
         </div>
 
       </div>
+    </div>
+  );
+}
+
+function MobileCarouselDots({ total }: { total: number }) {
+  const { api } = useCarousel();
+  const [current, setCurrent] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    onSelect();
+    return () => { api.off("select", onSelect); };
+  }, [api]);
+
+  return (
+    <div className="flex justify-center gap-1.5 mt-3">
+      {Array.from({ length: total }).map((_, i) => (
+        <span
+          key={i}
+          className={`block rounded-full transition-all duration-300 ${
+            i === current
+              ? "w-4 h-1.5 bg-textColor"
+              : "w-1.5 h-1.5 bg-gray-300"
+          }`}
+        />
+      ))}
     </div>
   );
 }
