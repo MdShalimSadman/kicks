@@ -7,7 +7,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
   height?: string;
 }
 
-const IconComponent: FC<IconProps> = ({
+const Logo: FC<IconProps> = ({
   fill = "#232321",
   className,
   width = "128",
@@ -53,4 +53,4 @@ const IconComponent: FC<IconProps> = ({
   );
 };
 
-export default IconComponent;
+export default Logo;
