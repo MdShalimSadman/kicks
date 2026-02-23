@@ -11,9 +11,3 @@
 body {
   font-family: var(--font-rubik), sans-serif;
 }
-
-@layer components {
-  .font-open {
-    font-family: var(--font-open-sans), sans-serif;
-  }
-}

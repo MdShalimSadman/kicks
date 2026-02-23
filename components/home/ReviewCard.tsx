@@ -9,7 +9,7 @@ interface ReviewCardProps {
 
 const ReviewCard: FC<ReviewCardProps> = ({ review }) => {
   return (
-    <div className="bg-white rounded-[32px] overflow-hidden flex flex-col h-full shadow-sm">
+    <div className="bg-white rounded-4xl overflow-hidden flex flex-col h-full shadow-sm">
       <div className="p-6 lg:p-8 flex flex-col gap-4">
         <div className="flex justify-between gap-2 items-start">
           <div className="space-y-1">
@@ -31,7 +31,6 @@ const ReviewCard: FC<ReviewCardProps> = ({ review }) => {
           </div>
         </div>
 
-        {/* Rating Section */}
         <div className="flex items-center gap-1">
           {[...Array(5)].map((_, i) => (
             <StarIcon key={i} />
@@ -42,8 +41,7 @@ const ReviewCard: FC<ReviewCardProps> = ({ review }) => {
         </div>
       </div>
 
-      {/* Bottom Section: Product Image */}
-      <div className="relative w-full mt-auto overflow-hidden rounded-b-[32px] aspect-358/229 lg:aspect-429/325">
+      <div className="relative w-full mt-auto overflow-hidden rounded-b-4xl aspect-358/229 lg:aspect-429/325">
         <Image
           src={review.productImg}
           alt="Product shown in review"
