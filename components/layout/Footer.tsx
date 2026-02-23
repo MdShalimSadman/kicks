@@ -6,8 +6,8 @@ import SubFooter from "./SubFooter";
 
 const Footer = () => {
   return (
-    <footer>
-    <div className="mt-32 px-4 md:px-15">
+    <footer className="mt-11.5 lg:mt-32">
+    <div className="px-4 md:px-15">
       <div className="bg-blue rounded-3xl lg:rounded-[48px] pt-2 lg:pt-16  font-semibold">
         <div className="flex flex-col lg:flex-row gap-11.25 p-4 pb-10 lg:pl-18 lg:pr-40 w-full items-start lg:items-center justify-between">
           <div className="text-white">
